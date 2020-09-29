@@ -12,6 +12,11 @@ export const reducer = (state, action) => {
                 ...state,
                 basket: [...state.basket, action.item],
             };
+        case 'REMOVE_FROM_BASKET':
+            return {
+                ...state,
+                basket: state.basket.filter(item => item.id !== action.item.id),
+            }
 
         default:
             return state;
