@@ -26,10 +26,6 @@ function Checkout() {
                             />
                         );
                     })}
-                    {/* BasketItem */}
-                    {/* BasketItem */}
-                    {/* BasketItem */}
-                    {/* BasketItem */}
                 </div>
             </div>
             <div className="checkout__right">
