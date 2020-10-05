@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { auth } from './firebase';
 
 import './Login.css';
 
 function Login() {
+
+    // this is to programatically route to a different page
+    const history = useHistory();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,7 +16,13 @@ function Login() {
         e.preventDefault();
 
         // do the firebase login magic here
-        console.log('firebase magic is going to start')
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then((auth) => {
+                console.log('user succesfully logged in : ', auth);
+                history.push('/');
+            })
+            .catch(error => alert(error.message));
     }
 
 
@@ -20,7 +30,13 @@ function Login() {
         e.preventDefault();
 
         // do somme firebase register magic here
-        console.log('firebase register magic is going to start')
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                console.log('user succesfully created : ', auth);
+                history.push('/');
+            })
+            .catch(error => alert(error.message));
     }
 
     return (
