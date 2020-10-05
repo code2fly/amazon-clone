@@ -1,0 +1,75 @@
+.login {
+  /* vh is view height to make sure the whole view heignt is used to set background and all */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.login__logo {
+  margin-top: 20px;
+  width: 120px;
+  object-fit: contain;
+}
+
+.login__formContainer {
+  width: 350px;
+  border: 1px solid lightgrey;
+  padding: 20px 26px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__formContainer > h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.login__form {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form > input {
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.06);
+}
+
+/* todo check this , it is not working for now */
+.login__form > input:active {
+  border: 1px solid orange;
+}
+
+.login__form > button {
+  height: 30px;
+  background-color: #f0c14b;
+  border: 1px solid;
+  border-radius: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+.login__formContainer > p {
+  font-size: small;
+}
+
+.login__signupButton {
+  height: 30px;
+  background-color: #f0c14b;
+  border: 1px solid;
+  border-radius: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+.login__signupButton:hover {
+  background-color: orange;
+}
