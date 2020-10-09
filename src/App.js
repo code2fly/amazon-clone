@@ -25,6 +25,11 @@ function App() {
           type: 'USER_LOGGED_IN',
           user: user,
         });
+      } else {
+        console.log('user logged out...')
+        dispatch({
+          type: 'USER_LOGGED_OUT',
+        });
       }
 
     },

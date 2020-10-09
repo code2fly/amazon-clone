@@ -56,6 +56,10 @@
   border-color: #a88734 #9c7e31 #846a29;
 }
 
+.login__form > button:hover {
+  cursor: pointer;
+}
+
 .login__formContainer > p {
   font-size: small;
 }
@@ -71,5 +75,5 @@
 }
 
 .login__signupButton:hover {
-  background-color: orange;
+  cursor: pointer;
 }

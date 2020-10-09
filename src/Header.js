@@ -19,9 +19,6 @@ function Header() {
             console.log('this should be user logout event');
             auth.signOut()
                 .then((v) => {
-                    dispatch({
-                        type: 'USER_LOGGED_OUT',
-                    });
                     history.push('/');
                 }, (errorReason) => {
                     alert('error while logging out : ', errorReason);
