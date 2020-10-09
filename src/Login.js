@@ -30,8 +30,7 @@ function Login() {
         e.preventDefault();
 
         // do somme firebase register magic here
-        auth
-            .createUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email, password)
             .then((auth) => {
                 console.log('user succesfully created : ', auth);
                 history.push('/');

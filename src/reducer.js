@@ -1,6 +1,7 @@
 
 export const initialState = {
     basket: [],
+    user: null,
 };
 
 
@@ -9,6 +10,7 @@ export const initialState = {
 export const getBasketTotal = (basket) => {
     return basket?.reduce((total, item) => total + item.price, 0);
 }
+
 
 
 export const reducer = (state, action) => {
@@ -38,6 +40,16 @@ export const reducer = (state, action) => {
                 basket: newBasket,
             }
 
+        case 'USER_LOGGED_IN':
+            return {
+                ...state,
+                user: action.user,
+            }
+        case 'USER_LOGGED_OUT':
+            return {
+                ...state,
+                user: null,
+            }
         default:
             return state;
     }

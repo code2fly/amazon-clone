@@ -1,14 +1,39 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useStateValue } from './StateProvider';
+import { auth } from './firebase';
 
 import './Header.css';
-import { useStateValue } from './StateProvider';
 
 function Header() {
 
-    const [{ basket }, dispatch] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
+    const history = useHistory();
+
+
+    const signInOrSignoutRedirect = () => {
+        if (user) {
+            // this should be a signout and we can keep user in the home page also dispatch action to clear user
+            console.log('this should be user logout event');
+            auth.signOut()
+                .then((v) => {
+                    dispatch({
+                        type: 'USER_LOGGED_OUT',
+                    });
+                    history.push('/');
+                }, (errorReason) => {
+                    alert('error while logging out : ', errorReason);
+                });
+
+
+        }
+        else {
+            // this is a login case move user to login page
+            history.push('/login');
+        }
+    }
 
     return (
         <div className="header">
@@ -23,10 +48,10 @@ function Header() {
             </div>
 
             <div className="header__nav">
-                <Link to="/login">
+                <Link onClick={signInOrSignoutRedirect} >
                     <div className="header__option">
-                        <span className="header__optionLineOne">Hello Guest</span>
-                        <span className="header__optionLineTwo">Sign In</span>
+                        <span className="header__optionLineOne">Hello {user ? (user.displayName ? user?.displayName : user?.email) : 'Guest'}</span>
+                        <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
                     </div>
                 </Link>
 
